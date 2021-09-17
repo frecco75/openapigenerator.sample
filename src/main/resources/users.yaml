@@ -1,0 +1,36 @@
+openapi: "3.0.1"
+info:
+  version: 1.0.0
+  title: Users
+
+paths:
+  /users/{userId}:
+    get:
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: user found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          description: user not found
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
